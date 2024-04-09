@@ -1,0 +1,113 @@
+<!doctype html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:v="urn:schemas-microsoft-com:vml"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+
+  <body
+    style="
+      min-width: 100%;
+      font-family: Poppins, sans-serif;
+      background: #ffffff;
+      font-size: 1rem;
+    "
+  >
+    <div
+      style="
+        max-width: 42.5rem;
+        width: 100%;
+        margin: 0 auto;
+        padding: 2.8rem 2.2% 4.5rem;
+        background: #f4f7ff;
+        background-image: url(https://img.freepik.com/free-vector/dark-wavy-wallpaper-theme_23-2148417508.jpg?w=826&t=st=1712511401~exp=1712512001~hmac=3df8f0a9a110680c5434cad35227eb7bd6a02c45d6c037315200d0693f9b1f2c);
+        background-repeat: no-repeat;
+        background-size: 50rem 28.25rem;
+        background-position: top center;
+        font-size: 0.875rem;
+        color: #434343;
+        backdrop-filter: blur(0.2rem);
+      "
+    >
+      <div style="width: 100%; display: flex">
+        {% block header %}
+        <img
+          alt="logo"
+          src="https://archisketch-resources.s3.ap-northeast-2.amazonaws.com/vrstyler/1663574980688_114990/archisketch-logo"
+          height="24px"
+        />
+        <span
+          style="
+            margin-left: auto;
+            text-align: right;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #fff;
+          "
+          >{{date}}</span
+        >
+        {% endblock %}
+      </div>
+      <div
+        style="
+          margin: 0;
+          margin-top: 3.75rem;
+          padding: 12% 7% 3rem;
+          background: #ffffff;
+          border-radius: 1.875rem;
+        "
+      >
+        <span
+          style="
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #434343;
+          "
+        >
+          ¡Hola {{username}}!
+        </span>
+        <div
+          style="
+            width: 100%;
+            max-width: 90%;
+            margin: 0 auto;
+            text-align: center;
+          "
+        >
+          {% block main %} {% endblock %}
+        </div>
+      </div>
+      <div
+        style="
+          margin-top: 2rem;
+          width: 100%;
+          max-width: 30.625rem;
+          margin: 1.25rem auto 0;
+          border-top: 1px solid #e6ebf1;
+        "
+      >
+        {% block footer %} {% endblock %}
+      </div>
+    </div>
+  </body>
+</html>
