@@ -1,0 +1,62 @@
+{% macro text_card(text="", style="") -%}
+<p
+  style="
+			margin-top: 1.0625rem;
+			font-size: 1.2rem;
+			font-weight: 600;
+			letter-spacing: 0.56px;
+			color: #434343;
+      {{ style|default('') }}
+		"
+>
+  {{ text }}
+</p>
+{% endmacro %} {% macro text_code(text="", style="") -%}
+<p
+  style="
+      margin-top: 3.75rem;
+			text-align: center;
+			font-size: 2.5rem;
+			font-weight: 600;
+			color: #333;
+			word-break: break-all;
+			letter-spacing: 1.2rem; 
+      {{ style|default('') }}"
+>
+  {{ text }}
+</p>
+{% endmacro %} {% macro button_main(text="", redirect="#", styles="") -%}
+<a
+  href="{{ redirect }}"
+  style="
+		background-color: #7c3aed !important;
+		box-sizing: border-box;
+		color: #fff;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 1rem;
+		font-weight: 600;
+		line-height: 1.5;
+		vertical-align: middle;
+		border-radius: 0.375rem;
+		border: 1px solid #7c3aed;
+		padding: 0.75rem 1.5rem;
+		letter-spacing: 0.025em;
+    cursor: pointer;
+    {{styles | default('')}}"
+  target="_blank"
+  >{{ text }}</a
+>
+{% endmacro %} {% macro text_footer(text="") -%}
+<p
+  style="
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #434343;
+  {{ style|default('') }}
+  "
+>
+  {{text}}
+</p>
+{% endmacro %}

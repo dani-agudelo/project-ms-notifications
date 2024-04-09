@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% import 'macros.html' as macros %}
+
+{% set text_card = "Gracias por elegir funeraria San Jose. Continúa registrándote
+		introduciendo el código que aparece a continuación:" %}
+{% set text_footer = "Estás recibiendo este correo electrónico porque has iniciado sesión 
+  recientemente en una cuenta asociada a la funeraria San Jose. Si no es el caso, 
+  ignora este mensaje." %}
+
+{% block main %}
+  {{ macros.text_card(text_card) }}
+  {{ macros.text_code(code) }}
+  {{ macros.button_main('Verificar cuenta', verify_url, 'margin-top: 1rem') }} 
+{% endblock %} {% block footer %}
+<p style="
+		margin: 0;
+		font-size: 0.875rem;
+		font-weight: 400;
+		letter-spacing: 0.025em;
+		color: #434343;
+		margin-top: 2.5rem;
+	">
+	¿No puede introducir el código? Pegue el siguiente enlace en su navegador:
+	<br />
+	<a href="{{verify_url or ''}}" target="_blank" style="
+			box-sizing: border-box;
+			background-color: transparent;
+			color: #06b6d4;
+			text-decoration-line: none;
+			word-break: break-all;
+		">{{verify_url or ''}}</a>
+</p>
+{{macros.text_footer(text_footer) }}
+{% endblock %}
