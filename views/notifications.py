@@ -1,14 +1,16 @@
 from . import *
 
-
+# Validate if the model has all the required keys
 def validate_model(model: Model, req: dict) -> tuple | None:
-    if not model.validate_keys(req):
-        return jsonify({"error": "Missing keys"}), 400
+    if model.validate_keys(req):
+        return
+    return jsonify({"error": "Missing keys"}), 400
 
-
+#
 def send_email(model: Model) -> tuple | Response:
     try:
         message = model.message()
+
         send = NotificationSerivice.send_email(message)
 
         if send.get("status") == "Succeeded":
@@ -18,7 +20,7 @@ def send_email(model: Model) -> tuple | Response:
     except Exception as err:
         return jsonify({"error": "Email not sent"}), 500
 
-
+# Process the request and send the email
 def process_request(Model: Model, req: Request) -> Response | tuple:
     try:
         model = Model(**req.get_json())
@@ -29,7 +31,7 @@ def process_request(Model: Model, req: Request) -> Response | tuple:
         print(err)
         return jsonify({"error": "Arguments not found"}), 400
 
-
+# Test the endpoint
 @app.get("/")
 def index() -> str:
     return render_template("email_verify_mfa.html")

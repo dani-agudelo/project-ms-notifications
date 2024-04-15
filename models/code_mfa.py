@@ -1,6 +1,6 @@
 from .model import Model
 
-
+# This is a class that inherits from the Model class
 class CodeMfa(Model):
     """
     This class is used to send the code to the user to verify the 2FA

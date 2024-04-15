@@ -16,6 +16,7 @@ class NotificationSerivice:
 
     @classmethod
     def send_email(cls, mens: Message):
+        
         try:
             connection_string, sender_addr = cls.load_config()
             client = EmailClient.from_connection_string(connection_string)

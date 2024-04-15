@@ -5,7 +5,7 @@ from flask import render_template
 
 from .message import Message
 
-
+# ABC is used to create an abstract class
 class Model(ABC):
     """
     This class is used to create a model that can be converted to a json representation
