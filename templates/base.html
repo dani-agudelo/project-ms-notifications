@@ -61,7 +61,7 @@
             font-weight: 500;
             color: #fff;
           "
-          >{{date}}</span
+          >{{ date | datetime_format("%d %b, %Y") }}</span
         >
         {% endblock %}
       </div>

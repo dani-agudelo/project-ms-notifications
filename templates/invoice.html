@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% import 'macros.html' as macros %}
+
+{% set text_card = "A continuación encontrará su nueva contraseña." %}
+{% set text_footer = "❤️ Gracias!" %}
+
+{% block main %}
+{{ 
+  macros.text_card("Comprobante de pago", "font-size: 1.7rem; text-align: left; margin: .7rem 0 .5rem") 
+}}
+<hr style="border: 0; height: 1px; background-color: #ddd;">
+{{ 
+  macros.text_card(payment_info.date_approved | datetime_format("%d %b %Y, %H:%M:%S"),
+    "text-align: left; color: #666; font-size: 1rem; margin: 1rem 0") 
+}}
+<hr style="border: 0; height: 1px; background-color: #ddd;">
+<div style="margin: 20px 0; text-align: left">
+    {{ macros.text_card("Total", "font-size: 1.5rem; font-weight: bold; margin: 0;") }}
+    {{ macros.text_card(payment_info.transaction_amount | currency_format,
+    "font-size: 2rem; font-weight: bold; margin: 0;") }}
+</div>
+<div style="margin: 20px 0; text-align: left">
+    <p style="font-size: 1.2rem; font-weight: bold; margin: 0;">
+        Título:
+        <span style="font-weight: normal;">
+            {{payment_info.description }}
+        </span>
+    </p>
+</div>
+<div style="margin: 20px 0; text-align: left">
+    <p style="font-size: 1.2rem; font-weight: bold; margin: 0;">
+        Forma de Pago:
+        <span style="font-weight: normal;">
+            {{ payment_info.payment_type_id }}
+        </span>
+    </p>
+</div>
+<hr style="border: 0; height: 1px; background-color: #ddd;">
+<div style="margin: 1rem 0 0; text-align: left">
+    <p style="font-size: 1rem; font-weight: bold; margin: 0;">
+        Número de transacción:
+        <span style="font-weight: normal;">
+            {{ payment_info.id }}
+        </span>
+    </p>
+</div>
+{% endblock %}
+{% block footer %}
+{{macros.text_footer(text_footer)}}
+{% endblock %}

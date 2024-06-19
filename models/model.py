@@ -5,6 +5,7 @@ from flask import render_template
 
 from .message import Message
 
+
 # ABC is used to create an abstract class
 class Model(ABC):
     """
@@ -22,7 +23,7 @@ class Model(ABC):
         for key, value in kwargs.items():
             setattr(self, key, value)
 
-        self.date = datetime.now().strftime("%d %b, %Y")
+        self.date = str(datetime.now())
         self.html = render_template(self.template, **self.json())
 
     def message(self):
