@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% import 'macros.html' as macros %}
+
+{% set text_footer = "Este código le permitirá a familiares, amigos y personas con las cuales se comparta, 
+acceder al sistema y consultar la información del servicio." %}
+
+{% block main %}
+{{ 
+  macros.text_card("Confirmación de Servicio", "font-size: 1.5rem; text-align: left; margin: .7rem 0 .5rem") 
+}}
+<hr style="border: 0; height: 1px; background-color: #ddd;">
+<div style="margin: 1rem 0; text-align: left; margin: 1rem 0;">  
+  <div style="display: flex; gap: .2rem; align-items: center;">
+    {{ macros.text_card("Fecha y Hora:", "font-size: 1rem; font-weight: bold; margin: 0;") }}
+    {{ macros.text_card(service_info.date | datetime_format("%d %b %Y, %H:%M:%S"), 
+      "font-size: 1rem; font-weight: normal; margin: 0;") 
+    }}
+  </div>
+   {% if service_info.headquarter_name and service_info.room and service_info.city %}
+     <div style="display: flex; align-items: center;">
+      {{ macros.text_card("Ciudad:", "font-size: 1rem; font-weight: bold; margin: 0; margin-right: .2rem;") }}
+      {{ macros.text_card(service_info.city, "font-size: 1rem; font-weight: normal; margin: 0;") }}
+    </div>
+    <div style="display: flex; gap: .5rem; align-items: center;">
+      {{ macros.text_card("Cede:", "font-size: 1rem; font-weight: bold; margin: 0; margin-right: .2rem;") }}
+      {{ macros.text_card(service_info.headquarter_name, "font-size: 1rem; font-weight: normal; margin: 0;") }}
+    </div>
+    <div style="display: flex; gap: .5rem; align-items: center;">
+      {{ macros.text_card("Sala:", "font-size: 1rem; font-weight: bold; margin: 0; margin-right: .2rem;") }}
+      {{ macros.text_card(service_info.room, "font-size: 1rem; font-weight: normal; margin: 0;") }}
+    </div>
+  {% endif %}
+</div>
+<hr style="border: 0; height: 1px; background-color: #ddd;">
+<div style="margin: 20px 0; text-align: center;">
+  {{
+    macros.text_card("Codigo Unico: " + service_info.unique_code, "font-size: 1.2rem; font-weight: bold; margin: 0; padding: 0")
+  }}
+</div>
+{% endblock %}
+{% block footer %}
+{{macros.text_footer(text_footer)}}
+{% endblock %}

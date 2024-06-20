@@ -5,6 +5,7 @@ from flask import Flask, Request, Response, jsonify, render_template, request
 from flask_cors import CORS
 
 from models.code_mfa import CodeMfa
+from models.confirmation_service import ConfirmationService
 from models.invoice import Invoice
 from models.model import Model
 from models.password_reset import PasswordReset
@@ -25,7 +26,7 @@ def currency_format(value):
 
 
 __flask__ = ["app", "render_template", "request", "Request", "Response", "jsonify"]
-__model__ = ["Model", "CodeMfa", "PasswordReset", "Invoice"]
+__model__ = ["Model", "CodeMfa", "PasswordReset", "ConfirmationService", "Invoice"]
 __services__ = ["NotificationSerivice"]
 __other__ = ["getenv"]
 

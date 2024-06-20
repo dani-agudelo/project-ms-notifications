@@ -28,12 +28,8 @@ def process_request(Model: Model, req: Request) -> Response | tuple:
 
         return error or send_email(model)
     except Exception as err:
+        print(err)
         return jsonify({"error": "Arguments not found"}), 400
-
-
-@app.get("/")
-def index() -> str:
-    return render_template("email_verify_mfa.html")
 
 
 @app.post("/notifications/send-code")
@@ -49,3 +45,8 @@ def send_password_reset() -> Response | tuple:
 @app.post("/notifications/invoice")
 def send_invoice() -> Response | tuple:
     return process_request(Invoice, request)
+
+
+@app.post("/notifications/confirmation-service")
+def confirmation_service() -> Response | tuple:
+    return process_request(ConfirmationService, request)
